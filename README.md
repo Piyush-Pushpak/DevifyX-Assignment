@@ -128,6 +128,36 @@ Includes:
 
 ---
 
+## 🗃️ Database Schema Definitions
+
+### 👤 User Schema
+- `name`: String (required)
+- `email`: String (required, unique)
+- `password`: String (hashed, required)
+- `role`: String ('admin' | 'moderator' | 'user', default: user)
+- `resetToken`: String (optional, for reset)
+- `resetTokenExpire`: Date (optional)
+- `timestamps`: createdAt, updatedAt
+
+### 📦 Product Schema
+- `name`: String (required)
+- `description`: String (required)
+- `price`: Number (required)
+- `category`: String (required)
+- `stock`: Number (default: 0)
+- `timestamps`: createdAt, updatedAt
+
+### 📜 AuditLog Schema
+- `user`: ObjectId (ref to `User`)
+- `action`: String (e.g. "delete user")
+- `description`: String
+- `method`: String (e.g. GET, POST)
+- `path`: String (route path)
+- `ip`: String (request IP)
+- `createdAt`: Date
+
+---
+
 ## ✅ Assignment Compliance
 
 | Requirement                            | Status |
